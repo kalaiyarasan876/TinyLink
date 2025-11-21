@@ -1,0 +1,53 @@
+<%- include("layout", { body: `
+<h2>All Short Links</h2>
+
+${links.length === 0 ? `
+    <p class="empty">No links created yet.</p>
+` : `
+<table class="table">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Target URL</th>
+            <th>Clicks</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        ${links.map(link => `
+        <tr>
+            <td>
+                <a target="_blank" href="/${link.code}">${link.code}</a>
+            </td>
+
+            <td class="truncate" title="${link.target_url}">
+                ${link.target_url}
+            </td>
+
+            <td align="center">${link.clicks}</td>
+
+            <td class="actions">
+                <button onclick="copyLink('${link.code}')" class="btn small">Copy</button>
+                <button onclick="del('${link.code}')" class="btn danger small">Delete</button>
+            </td>
+        </tr>
+        `).join("")}
+    </tbody>
+</table>
+`}
+<script>
+function copyLink(code) {
+    const url = window.location.origin + "/" + code;
+    navigator.clipboard.writeText(url);
+    alert("Copied: " + url);
+}
+
+async function del(code) {
+    if (!confirm("Delete this link?")) return;
+
+    const res = await fetch("/api/v1/" + code, { method:"DELETE" });
+
+    if (res.status === 204) location.reload();
+}
+</script>
+` }) %>

@@ -1,0 +1,10 @@
+<%- include("layout", { body: `
+<h2>Link Statistics</h2>
+
+<div class="card stats">
+    <p><strong>Code:</strong> ${link.code}</p>
+    <p><strong>Target:</strong> ${link.target_url}</p>
+    <p><strong>Clicks:</strong> ${link.clicks}</p>
+    <p><strong>Last Clicked:</strong> ${link.last_clicked || "Never"}</p>
+</div>
+` }) %>

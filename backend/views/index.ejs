@@ -1,0 +1,38 @@
+<%- include("layout", { body: `
+<div class="card">
+    <h2>Create Short Link</h2>
+    <form id="createForm">
+        <label>Target URL</label>
+        <input type="text" id="target" placeholder="https://example.com" required>
+        
+        <label >Custom Code (optional)</label>
+        <input type="text" id="code" placeholder="abc123">
+
+        <button type="submit">Create</button>
+    </form>
+
+    <p id="result"></p>
+</div>
+
+<script>
+document.getElementById("createForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const target = document.getElementById("target").value;
+    const code = document.getElementById("code").value;
+
+    const res = await fetch("/api/v1", {
+        method:"POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ target, code })
+    });
+
+    const data = await res.json();
+
+    document.getElementById("result").innerHTML =
+        res.status === 201
+            ? 'Short URL Created: <a href="/' + data.code + '" target="_blank">/' + data.code + '</a>'
+            : 'Error: ' + data.error;
+});
+</script>
+` }) %>

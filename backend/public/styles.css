@@ -1,0 +1,121 @@
+/* Global */
+body {
+    font-family: Arial, sans-serif;
+    background:#f7f7fa;
+    margin:0;
+    padding:0;
+    color:#222;
+}
+
+.container {
+    max-width:900px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+/* Header */
+.header {
+    background:white;
+    padding:15px 20px;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header a {
+    margin-left:20px;
+    text-decoration:none;
+    color:#444;
+}
+
+.header a:hover {
+    color:#000;
+}
+
+.logo {
+    margin:0;
+}
+
+/* Card */
+.card {
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    margin-top:20px;
+}
+
+/* Form */
+.form label {
+    font-weight:bold;
+    display:block;
+    margin-top:15px;
+}
+
+.form input {
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.btn {
+    margin-top:20px;
+    padding:10px 18px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn:disabled {
+    opacity:0.6;
+    cursor:not-allowed;
+}
+
+.btn.small { padding:6px 10px; font-size:13px; }
+.btn.danger { background:#d9534f; }
+
+/* Messages */
+.msg { margin-top:15px; }
+.success { color:green; }
+.error { color:red; }
+
+/* Table */
+.table {
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.table th, .table td {
+    border-bottom:1px solid #ddd;
+    padding:12px;
+}
+
+.truncate {
+    max-width:350px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.actions { white-space:nowrap; }
+
+/* Empty state */
+.empty {
+    margin-top:20px;
+    color:#666;
+    font-style:italic;
+}
+
+/* Footer */
+.footer {
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    color:#666;
+}
